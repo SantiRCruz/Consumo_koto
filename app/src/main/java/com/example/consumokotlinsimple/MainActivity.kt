@@ -3,6 +3,8 @@ package com.example.consumokotlinsimple
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.consumokotlinsimple.adapters.UserAdapter
 import com.example.consumokotlinsimple.databinding.ActivityMainBinding
 import com.example.consumokotlinsimple.interfaces.ApiService
@@ -85,6 +87,7 @@ class MainActivity : AppCompatActivity() {
             ) {
                 Log.e("onResponse: ", response.body().toString())
                 binding.rvExample.adapter = UserAdapter(response.body()!!.data)
+                binding.rvExample.layoutManager = LinearLayoutManager(applicationContext)
             }
 
             override fun onFailure(call: Call<ResponseResult>, t: Throwable) {
